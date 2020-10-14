@@ -1,0 +1,24 @@
+{
+  "name": "iplocate-backend",
+  "version": "0.0.1",
+  "description": "Backend for iplocate tool",
+  "scripts": {
+    "watch": "tsc --watch --preserveWatchOutput --pretty",
+    "dev": "tsc && NODE_ENV=development nodemon",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "author": "Jeff Hackshaw <jeffrey.hackshaw@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^3.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.11.8",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.0.3"
+  }
+}

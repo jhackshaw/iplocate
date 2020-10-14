@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "description": "Backend for iplocate tool",
   "scripts": {
-    "watch": "tsc --watch --preserveWatchOutput --pretty",
-    "dev": "tsc && NODE_ENV=development nodemon",
-    "format": "prettier --write \"src/**/*.ts\"",
+    "dev": "NODE_ENV=development concurrently \"npm:build:watch\" \"nodemon\"",
+    "lint": "prettier --check \"src/**/*.ts\"",
+    "lint:fix": "prettier --write \"src/**/*.ts\"",
     "build": "tsc",
+    "build:watch": "tsc --watch --preserveWatchOutput --pretty",
     "start": "node dist/index.js"
   },
   "author": "Jeff Hackshaw <jeffrey.hackshaw@gmail.com>",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@types/node": "^14.11.8",
+    "concurrently": "^5.3.0",
     "nodemon": "^2.0.4",
     "prettier": "^2.1.2",
     "tsconfig-paths": "^3.9.0",

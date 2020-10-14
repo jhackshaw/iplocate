@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  .c0 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--background-card);
+}
+
+.c1 {
+  max-width: 400px;
+  color: var(--text-light);
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+.c1 a: {
+  color: var(--text-secondary);
+}
+
+<footer
+    class="c0"
+  >
+    <div>
+      © 2020, Jeff Hackshaw
+    </div>
+    <div
+      class="c1"
+    >
+      This product includes GeoLite2 data created by MaxMind, available from 
+      <a
+        href="https://www.maxmind.com"
+      >
+        https://www.maxmind.com
+      </a>
+      .
+    </div>
+  </footer>
+</DocumentFragment>
+`;

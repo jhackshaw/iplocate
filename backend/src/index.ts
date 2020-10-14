@@ -1,9 +1,14 @@
-import app from "./app";
+import { build } from "./app";
 
 const FASTIFY_PORT = Number(process.env.FASTIFY_PORT) || 3000;
 
-app.listen(FASTIFY_PORT);
+const server = build({
+  logger: {
+    level: "info",
+    prettyPrint: true,
+  },
+});
 
-console.log(`🚀  Fastify server running on port ${FASTIFY_PORT}`);
-console.log(`Route index: /`);
-console.log(`Route user: /api/v1/user`);
+// Start server
+server.listen(FASTIFY_PORT, "0.0.0.0");
+console.log(`🚀  IP Geo lookup service running on port ${FASTIFY_PORT}`);

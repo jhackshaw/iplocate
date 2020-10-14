@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  min-height: 100vh;
+  height: 100vh;
   font-family: var(--font-family);
 `;
 

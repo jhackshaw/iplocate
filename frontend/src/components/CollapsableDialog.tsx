@@ -23,6 +23,7 @@ const Wrapper = styled.div<Props>`
   background: transparent;
 
   ${Card} {
+    z-index: 1000;
     position: absolute;
     min-width: 400px;
     top: ${(props) => (props.collapsed ? "10px" : "50%")};

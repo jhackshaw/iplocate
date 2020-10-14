@@ -14,5 +14,6 @@ export const themes = {
     "text-light": "#424242",
     "text-lighter": "#757575",
     "text-lightest": "#9e9e9e",
+    "text-error": "#d32f2f",
   },
 };

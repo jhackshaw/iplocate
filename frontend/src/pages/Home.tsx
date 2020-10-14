@@ -1,23 +1,35 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { CollapsableDialog, Input, CardHeader } from "components";
+import { CollapsableDialog, Map, CardHeader, IPForm } from "components";
+import { IP } from "types";
 
 export const Home: React.FC = (props) => {
-  const [collapsed, setcollapsed] = useState(false);
+  const [currentIp, setCurrentIp] = useState<IP>();
+
+  const onSearchIP = (ip: string) => {
+    setCurrentIp({
+      address: ip,
+      city: "Test",
+      longitude: Math.random() * 90 - 45,
+      latitude: Math.random() * 90 - 45,
+    });
+  };
 
   return (
     <Wrapper>
-      <button onClick={() => setcollapsed((c) => !c)}>test</button>
-      <CollapsableDialog collapsed={collapsed}>
+      <CollapsableDialog collapsed={!!currentIp}>
         <CardHeader>Locate IP Address</CardHeader>
-        <Input placeholder="IP Address" />
+        <IPForm onSubmit={(ip) => onSearchIP(ip)} />
       </CollapsableDialog>
+      <Map selectedIP={currentIp} />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  flex: 1 1 auto;
+  flex: 1;
+  overflow-y: hidden;
+  position: relative;
   width: 100%;
-  background-color: var(--text-light);
+  height: 100%;
 `;

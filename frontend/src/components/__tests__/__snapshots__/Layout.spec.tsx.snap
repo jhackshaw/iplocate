@@ -11,7 +11,7 @@ exports[`matches snapshot 1`] = `
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
-  min-height: 100vh;
+  height: 100vh;
   font-family: var(--font-family);
 }
 

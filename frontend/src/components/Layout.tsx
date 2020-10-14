@@ -23,6 +23,7 @@ const Global = createGlobalStyle`
   html, body {
     padding: 0;
     margin: 0;
+    height: 100%;
   }
 `;
 
@@ -36,5 +37,8 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
   background-color: var(--background-main);
 `;

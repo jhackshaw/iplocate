@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  .c0 {
+  padding: 2rem 1rem;
+  margin: 0;
+  border-radius: 5px;
+  background-color: var(--background-card);
+}
+
+<div
+    class="c0"
+  />
+</DocumentFragment>
+`;

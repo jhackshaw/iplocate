@@ -28,6 +28,7 @@ The development environment is configured using `docker-compose`. In order to ru
    - From the root of the project, start environment using docker: `docker-compose up --build`
    - Local changes in `backend/src` and `frontend/src` will be hot-reloaded
    - Other changes will require stopping and starting the environment
+3. Navigate to [http://localhost](http://localhost) in a browser
 
 ### testing
 

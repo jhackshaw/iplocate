@@ -34,14 +34,14 @@ export const IPMenu: React.FC<Props> = (props) => {
                 onClick={() => onToggleIpVisible(ip)}
                 aria-label="toggle ip visibility on"
               >
-                <FaEye />
+                <FaEyeSlash />
               </RowAction>
             ) : (
               <RowAction
                 onClick={() => onToggleIpVisible(ip)}
                 aria-label="toggle ip visibility off"
               >
-                <FaEyeSlash />
+                <FaEye />
               </RowAction>
             )}
           </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import DeckGL from "@deck.gl/react";
 import MapGL, { FlyToInterpolator, ViewState } from "react-map-gl";
 import { IP } from "types";
@@ -52,9 +52,11 @@ export const Map: React.FC<Props> = (props) => {
     }
   }, [selectedIP]);
 
+  const visibleIPs = useMemo(() => allIPs.filter((ip) => !ip.hidden), [allIPs]);
+
   const iconPointLayer = new IconLayer<IP>({
     id: "all-ips",
-    data: allIPs,
+    data: visibleIPs,
     pickable: true,
     iconAtlas: iconAtlas,
     iconMapping: ICON_MAPPING,

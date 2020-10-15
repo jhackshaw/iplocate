@@ -1,0 +1,78 @@
+name: IpLocate Frontend
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "frontend/**"
+      - ".github/workflows/frontend.yml"
+
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "frontend/**"
+      - ".github/workflows/frontend.yml"
+
+defaults:
+  run:
+    working-directory: ./frontend
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.2
+      - uses: actions/setup-node@v2.1.1
+        with:
+          node-version: "12"
+      - name: Restore npm cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: npm ci
+      - name: Check Format
+        run: npm run format:check
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.2
+      - uses: actions/setup-node@v2.1.1
+        with:
+          node-version: "12"
+      - name: Restore npm cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: npm ci
+      - name: Test
+        run: npm run test:coverage
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.2
+      - uses: actions/setup-node@v2.1.1
+        with:
+          node-version: "12"
+      - name: Restore npm cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build

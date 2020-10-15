@@ -5,8 +5,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "eject": "react-scripts eject",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test:coverage": "react-scripts test -- --coverage",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx}\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,7 +36,12 @@
     "@types/node": "^12.12.67",
     "@types/react": "^16.9.52",
     "@types/react-dom": "^16.9.8",
+    "@types/react-map-gl": "^5.2.7",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/styled-components": "^5.1.4",
     "deck.gl": "^8.3.0",
+    "jest-styled-components": "^7.0.3",
+    "prettier": "^2.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
@@ -41,11 +49,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "styled-components": "^5.2.0",
-    "typescript": "^3.7.5",
-    "@types/react-map-gl": "^5.2.7",
-    "@types/react-router-dom": "^5.1.6",
-    "@types/styled-components": "^5.1.4",
-    "jest-styled-components": "^7.0.3"
+    "typescript": "^3.7.5"
   },
   "jest": {
     "coveragePathIgnorePatterns": [

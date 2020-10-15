@@ -16,6 +16,7 @@ export const Home: React.FC = () => {
 
   const onSearchIP = async (ip: string) => {
     setLoading(true);
+    setError("");
     setAllIps((existing) => existing.filter((e) => e.traits.ipAddress !== ip));
     const params = new URLSearchParams({ ip });
     try {

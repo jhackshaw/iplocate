@@ -28,7 +28,6 @@ exports[`matches snapshot 1`] = `
   font-weight: 300;
   font-size: 0.7rem;
   text-align: right;
-  padding-top: 1rem;
 }
 
 .c1 a: {
@@ -50,6 +49,7 @@ exports[`matches snapshot 1`] = `
 
 @media screen and (max-width:450px) {
   .c1 {
+    padding-top: 1rem;
     text-align: left;
   }
 }

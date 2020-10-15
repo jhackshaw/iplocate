@@ -9,6 +9,12 @@ exports[`matches snapshot 1`] = `
   background-color: var(--background-card);
 }
 
+@media screen and (max-width:450px) {
+  .c0 {
+    padding: 1rem;
+  }
+}
+
 <div
     class="c0"
   />

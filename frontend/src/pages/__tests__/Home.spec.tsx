@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  render,
-  baseIP,
-  fireEvent,
-  wait,
-  getByAltText,
-  queryByLabelText,
-} from "test-utils";
+import { render, baseIP, fireEvent, wait } from "test-utils";
 import { Home } from "../Home";
 import { request } from "utils/request";
 
@@ -32,6 +25,14 @@ const setItemMock = localStorage.setItem as jest.Mock;
 jest.spyOn(Storage.prototype, "getItem");
 const getItemMock = localStorage.getItem as jest.Mock;
 
+let oldMatchMedia: typeof window.matchMedia;
+const mediaQueryMock = jest.fn();
+
+beforeAll(() => {
+  oldMatchMedia = window.matchMedia;
+  window.matchMedia = mediaQueryMock;
+});
+
 beforeEach(() => {
   getItemMock.mockReturnValue(null);
 });
@@ -40,10 +41,12 @@ afterEach(() => {
   mockRequest.mockReset();
   setItemMock.mockReset();
   getItemMock.mockReset();
+  mediaQueryMock.mockReset();
 });
 
 afterAll(() => {
   jest.restoreAllMocks();
+  window.matchMedia = mediaQueryMock;
 });
 
 const renderAndSearch = async (value: string) => {
@@ -74,6 +77,28 @@ it("adds search result to ip menu", async () => {
   mockRequest.mockResolvedValue(baseIP);
   const { getByText } = await renderAndSearch("1.1.1.1");
   expect(getByText(baseIP.traits.ipAddress!)).toBeInTheDocument();
+});
+
+it("collapses menu on set current ip on mobile", async () => {
+  mediaQueryMock.mockReturnValue(true);
+  mockRequest.mockResolvedValue(baseIP);
+  const { getByText, queryByText } = await renderAndSearch("1.1.1.1");
+  expect(getByText(baseIP.traits.ipAddress!)).toBeInTheDocument();
+  fireEvent.click(getByText(baseIP.traits.ipAddress!));
+  await wait(() => {
+    expect(queryByText(baseIP.traits.ipAddress!)).not.toBeInTheDocument();
+  });
+});
+
+it("does not collapse menu on set current ip on desktop", async () => {
+  mediaQueryMock.mockReturnValue(false);
+  mockRequest.mockResolvedValue(baseIP);
+  const { getByText } = await renderAndSearch("1.1.1.1");
+  expect(getByText(baseIP.traits.ipAddress!)).toBeInTheDocument();
+  fireEvent.click(getByText(baseIP.traits.ipAddress!));
+  await wait(() => {
+    expect(getByText(baseIP.traits.ipAddress!)).toBeInTheDocument();
+  });
 });
 
 it("throws error if latitude not present", async () => {

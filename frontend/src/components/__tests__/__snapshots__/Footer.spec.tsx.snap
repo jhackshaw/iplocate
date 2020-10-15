@@ -28,10 +28,30 @@ exports[`matches snapshot 1`] = `
   font-weight: 300;
   font-size: 0.7rem;
   text-align: right;
+  padding-top: 1rem;
 }
 
 .c1 a: {
   color: var(--text-secondary);
+}
+
+@media screen and (max-width:450px) {
+  .c0 {
+    -webkit-flex-flow: column nowrap;
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width:450px) {
+  .c1 {
+    text-align: left;
+  }
 }
 
 <footer

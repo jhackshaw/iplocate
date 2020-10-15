@@ -2,7 +2,7 @@
 
 exports[`matches snapshot 1`] = `
 <DocumentFragment>
-  .c7 {
+  .c11 {
   background: #fff;
   border: 2px solid var(--text-lightest);
   border-radius: 5px;
@@ -20,11 +20,48 @@ exports[`matches snapshot 1`] = `
   background-color: var(--background-card);
 }
 
-.c4 {
+.c5 {
   margin: 0;
-  padding: 0 0 1.5rem;
+  padding: 0;
   color: var(--text-primary);
   font-size: 1.8rem;
+}
+
+.c6 {
+  border-radius: 50%;
+  display: block;
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.c8 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow-y: auto;
+  padding-top: "1rem";
+}
+
+.c4 {
+  background: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .c1 {
@@ -38,6 +75,14 @@ exports[`matches snapshot 1`] = `
   z-index: 1000;
   position: absolute;
   min-width: 400px;
+  max-height: 70vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
   top: 50%;
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
@@ -49,7 +94,19 @@ exports[`matches snapshot 1`] = `
   box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
 }
 
-.c5 {
+.c1 .c7 {
+  -webkit-scrollbar-width: 0;
+  -moz-scrollbar-width: 0;
+  -ms-scrollbar-width: 0;
+  scrollbar-width: 0;
+  -ms-overflow-style: none;
+}
+
+.c1 .c7::-webkit-scrollbar {
+  display: none;
+}
+
+.c9 {
   margin: 0;
   padding: 0;
   display: -webkit-box;
@@ -69,7 +126,7 @@ exports[`matches snapshot 1`] = `
   justify-content: stretch;
 }
 
-.c5 .c6 {
+.c9 .c10 {
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
@@ -79,13 +136,13 @@ exports[`matches snapshot 1`] = `
   border-color: var(--text-lighter);
 }
 
-.c5 .c6:focus {
+.c9 .c10:focus {
   outline: none;
   border-color: var(--text-secondary);
   border-right: none;
 }
 
-.c5 button {
+.c9 button {
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
@@ -108,7 +165,7 @@ exports[`matches snapshot 1`] = `
   cursor: pointer;
 }
 
-.c5 button svg {
+.c9 button svg {
   display: block;
 }
 
@@ -122,48 +179,93 @@ exports[`matches snapshot 1`] = `
   height: 100%;
 }
 
+@media screen and (max-width:450px) {
+  .c3 {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width:450px) {
+  .c1 .c2 {
+    min-width: unset;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    -webkit-transform: unset;
+    -ms-transform: unset;
+    transform: unset;
+  }
+}
+
 <div
     class="c0"
   >
     <div
       class="c1"
+      title="IP Locate"
     >
       <div
         class="c2 c3"
       >
-        <h2
+        <button
+          aria-label="toggle menu expanded"
           class="c4"
         >
-          Locate IP Address
-        </h2>
-        <form
-          class="c5"
-        >
-          <input
-            aria-label="IP Address input"
-            class="c6 c7"
-            placeholder="IP Address"
-            value=""
-          />
-          <button
-            aria-label="Search IP Address"
-            type="submit"
+          <h2
+            class="c5"
+          >
+            IP Locate
+          </h2>
+          <span
+            class="c6"
           >
             <svg
               fill="currentColor"
               height="1em"
               stroke="currentColor"
               stroke-width="0"
-              viewBox="0 0 512 512"
+              viewBox="0 0 448 512"
               width="1em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"
               />
             </svg>
-          </button>
-        </form>
+          </span>
+        </button>
+        <div
+          class="c7 c8"
+        >
+          <form
+            class="c9"
+          >
+            <input
+              aria-label="IP Address input"
+              class="c10 c11"
+              placeholder="IP Address"
+              value=""
+            />
+            <button
+              aria-label="Search IP Address"
+              type="submit"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
     <div />

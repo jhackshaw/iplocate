@@ -1,27 +1,21 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
-import {
-  CollapsableDialog,
-  Map,
-  CardHeader,
-  IPForm,
-  IPMenu,
-  Loading,
-} from "components";
+import { CollapsableDialog, Map, IPForm, IPMenu, Loading } from "components";
 import { IP } from "types";
 import { request } from "../utils";
 import { usePersistentState } from "hooks";
 
 const endpoint = `${process.env.REACT_APP_API_URL ?? ""}/ip/search`;
 
-export const Home: React.FC = (props) => {
+export const Home: React.FC = () => {
   const [currentIp, setCurrentIp] = useState<IP>();
   const [allIps, setAllIps] = usePersistentState<IP[]>("allIps", []);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [menuExpanded, setMenuExpanded] = useState(true);
 
   const onSearchIP = async (ip: string) => {
-    setLoading(false);
+    setLoading(true);
     const params = new URLSearchParams({ ip });
     try {
       const ip = await request<IP>(`${endpoint}?${params}`);
@@ -61,23 +55,37 @@ export const Home: React.FC = (props) => {
     [setAllIps]
   );
 
+  const onSetCurrentIP = useCallback(
+    (ip: IP) => {
+      if (window.matchMedia("screen and (max-width: 450px)")) {
+        setMenuExpanded(false);
+      }
+      setCurrentIp(ip);
+    },
+    [setCurrentIp]
+  );
+
   return (
     <Wrapper>
       {loading && <Loading />}
-      <CollapsableDialog collapsed={!!currentIp && allIps.length > 0}>
-        <CardHeader>Locate IP Address</CardHeader>
+      <CollapsableDialog
+        title="IP Locate"
+        collapsed={!!currentIp && allIps.length > 0}
+        menuExpanded={menuExpanded}
+        setMenuExpanded={setMenuExpanded}
+      >
         {error && <ErrorMsg>{error}</ErrorMsg>}
         <IPForm onSubmit={(ip) => onSearchIP(ip)} />
         <IPMenu
           ips={allIps}
           onRemoveIp={onRemoveIp}
-          onSetCurrentIp={setCurrentIp}
+          onSetCurrentIp={onSetCurrentIP}
           onToggleIpVisible={onToggleIpVisible}
         />
       </CollapsableDialog>
       <Map
         selectedIP={currentIp}
-        onSetSelectedIp={setCurrentIp}
+        onSetSelectedIp={onSetCurrentIP}
         allIPs={allIps}
       />
     </Wrapper>

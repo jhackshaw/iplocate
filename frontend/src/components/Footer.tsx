@@ -19,6 +19,12 @@ const Wrapper = styled.footer`
   align-items: center;
   padding: 1rem 2rem;
   background-color: var(--background-card);
+
+  @media screen and (max-width: 450px) {
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    padding: 1rem;
+  }
 `;
 
 const MaxMindNotice = styled.div`
@@ -26,6 +32,11 @@ const MaxMindNotice = styled.div`
   font-weight: 300;
   font-size: 0.7rem;
   text-align: right;
+  padding-top: 1rem;
+
+  @media screen and (max-width: 450px) {
+    text-align: left;
+  }
 
   a: {
     color: var(--text-secondary);

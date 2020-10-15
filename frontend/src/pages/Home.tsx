@@ -58,7 +58,7 @@ export const Home: React.FC = () => {
 
   const onSetCurrentIP = useCallback(
     (ip: IP) => {
-      if (window.matchMedia("screen and (max-width: 450px)")) {
+      if (window.matchMedia("(max-width: 450px)").matches) {
         setMenuExpanded(false);
       }
       setCurrentIp(ip);

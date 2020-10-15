@@ -28,7 +28,7 @@ exports[`matches collapsed snapshot 1`] = `
   -ms-flex: 1;
   flex: 1;
   overflow-y: auto;
-  padding-top: "1rem";
+  padding-top: 1rem;
 }
 
 .c3 {
@@ -180,7 +180,7 @@ exports[`matches snapshot 1`] = `
   -ms-flex: 1;
   flex: 1;
   overflow-y: auto;
-  padding-top: "1rem";
+  padding-top: 1rem;
 }
 
 .c3 {

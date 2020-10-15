@@ -103,7 +103,7 @@ it("adds search result to ip menu", async () => {
 });
 
 it("collapses menu on set current ip on mobile", async () => {
-  mediaQueryMock.mockReturnValue(true);
+  mediaQueryMock.mockReturnValue({ matches: true });
   mockRequest.mockResolvedValue(baseIP);
   const { getByText, queryByText } = await renderAndSearch("1.1.1.1");
   expect(getByText(baseIP.traits.ipAddress!)).toBeInTheDocument();
@@ -114,7 +114,7 @@ it("collapses menu on set current ip on mobile", async () => {
 });
 
 it("does not collapse menu on set current ip on desktop", async () => {
-  mediaQueryMock.mockReturnValue(false);
+  mediaQueryMock.mockReturnValue({ matches: false });
   mockRequest.mockResolvedValue(baseIP);
   const { getByText } = await renderAndSearch("1.1.1.1");
   expect(getByText(baseIP.traits.ipAddress!)).toBeInTheDocument();

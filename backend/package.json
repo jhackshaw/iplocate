@@ -15,7 +15,8 @@
   "license": "MIT",
   "dependencies": {
     "@maxmind/geoip2-node": "^1.6.0",
-    "fastify": "^3.6.0"
+    "fastify": "^3.6.0",
+    "fastify-cors": "^4.1.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.14",

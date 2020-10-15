@@ -41,7 +41,7 @@ const ExpandIcon = styled.span`
 const Collapse = styled.div`
   flex: 1;
   overflow-y: auto;
-  padding-top: "1rem";
+  padding-top: 1rem;
 `;
 
 const ExpandHeader = styled.button`

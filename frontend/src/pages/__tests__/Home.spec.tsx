@@ -46,7 +46,7 @@ afterEach(() => {
 
 afterAll(() => {
   jest.restoreAllMocks();
-  window.matchMedia = mediaQueryMock;
+  window.matchMedia = oldMatchMedia;
 });
 
 const renderAndSearch = async (value: string) => {
@@ -71,6 +71,29 @@ it("matches snapshot", () => {
 
 it("can search for an ip", async () => {
   await renderAndSearch("1.1.1.1");
+});
+
+it("can search for the same ip", async () => {
+  mockRequest.mockResolvedValue(baseIP);
+  const { getByLabelText, queryAllByText } = await renderAndSearch("1.1.1.1");
+  fireEvent.change(getByLabelText("IP Address input"), {
+    target: { value: baseIP.traits.ipAddress! },
+  });
+  await wait(() => {
+    expect(getByLabelText("IP Address input")).toHaveValue(
+      baseIP.traits.ipAddress
+    );
+  });
+  fireEvent.click(getByLabelText("Search IP Address"));
+  await wait(() => {
+    expect(mockRequest).toHaveBeenCalledTimes(2);
+    expect(mockRequest.mock.calls[1][0]).toStrictEqual(
+      `/ip/search?ip=${baseIP.traits.ipAddress!}`
+    );
+  });
+  await wait(() => {
+    expect(queryAllByText(baseIP.traits.ipAddress!)).toHaveLength(1);
+  });
 });
 
 it("adds search result to ip menu", async () => {
@@ -153,9 +176,9 @@ it("populates from localstorage", async () => {
   expect(getByText(baseIP.traits.ipAddress!)).toBeInTheDocument();
   expect(getItemMock).toHaveBeenCalledTimes(1);
   expect(getItemMock.mock.calls[0][0]).toStrictEqual("allIps");
-  expect(setItemMock).toHaveBeenCalledTimes(2);
-  expect(setItemMock.mock.calls[1][0]).toStrictEqual("allIps");
-  expect(setItemMock.mock.calls[1][1]).toStrictEqual(
+  expect(setItemMock).toHaveBeenCalledTimes(3);
+  expect(setItemMock.mock.calls[2][0]).toStrictEqual("allIps");
+  expect(setItemMock.mock.calls[2][1]).toStrictEqual(
     JSON.stringify([baseIP, otherIP])
   );
 });

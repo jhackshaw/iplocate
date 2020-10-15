@@ -22,6 +22,7 @@ backend/coverage
 frontend/build
 backend/dist
 .build
+geoip-data
 
 # misc
 

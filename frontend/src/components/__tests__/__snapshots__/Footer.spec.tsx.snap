@@ -49,7 +49,7 @@ exports[`matches snapshot 1`] = `
 
 @media screen and (max-width:450px) {
   .c1 {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
     text-align: left;
   }
 }

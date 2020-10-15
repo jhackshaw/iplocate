@@ -34,7 +34,7 @@ const MaxMindNotice = styled.div`
   text-align: right;
 
   @media screen and (max-width: 450px) {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
     text-align: left;
   }
 

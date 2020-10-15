@@ -1,16 +1,16 @@
 import React from "react";
 import { usePersistentState } from "../usePersistentState";
-import { render, fireEvent, wait, mocked } from "test-utils";
+import { render, fireEvent, wait } from "test-utils/test-utils";
 
 jest.spyOn(Storage.prototype, "setItem");
-const setItemMock = mocked(localStorage.setItem);
+const setItemMock = localStorage.setItem as jest.Mock;
 
 jest.spyOn(Storage.prototype, "getItem");
-const getItemMock = mocked(localStorage.getItem);
+const getItemMock = localStorage.getItem as jest.Mock;
 
 interface TestCompProps {
   storagekey: string;
-  defaultVal: any;
+  defaultVal?: any;
   onclick(dispatch: React.Dispatch<any>): void;
 }
 const TestComp: React.FC<TestCompProps> = ({
@@ -53,6 +53,14 @@ it("gives default value if none exists", () => {
     <TestComp storagekey="testkey" defaultVal="zxcv" onclick={jest.fn()} />
   );
   expect(getByTestId("state")).toHaveTextContent("zxcv");
+});
+
+it("default value is undefined if not provided", () => {
+  getItemMock.mockReturnValue(null);
+  const { getByTestId } = render(
+    <TestComp storagekey="testkey" onclick={jest.fn()} />
+  );
+  expect(getByTestId("state")).toHaveTextContent("");
 });
 
 it("updates state with default value", () => {

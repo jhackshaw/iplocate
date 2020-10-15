@@ -1,4 +1,4 @@
-import { SetStateAction, useCallback, useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
 export const usePersistentState = <T>(
   key: string,

@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, wait } from "test-utils";
+import { fireEvent, render, wait } from "test-utils/test-utils";
 import { IPForm } from "../IPForm";
 
 const submitMock = jest.fn();

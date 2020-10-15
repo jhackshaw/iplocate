@@ -7,6 +7,7 @@ interface Props {
   onSubmit(value: string): void;
 }
 
+// basic validation here, better validation on backend with ajv
 const ipRE = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 const validateIp = (ip: string) => {
   return ipRE.test(ip);

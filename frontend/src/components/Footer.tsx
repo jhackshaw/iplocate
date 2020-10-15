@@ -22,10 +22,10 @@ const Wrapper = styled.footer`
 `;
 
 const MaxMindNotice = styled.div`
-  max-width: 400px;
   color: var(--text-light);
   font-weight: 300;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  text-align: right;
 
   a: {
     color: var(--text-secondary);

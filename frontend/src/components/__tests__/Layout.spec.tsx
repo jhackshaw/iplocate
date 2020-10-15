@@ -1,6 +1,6 @@
 import { get } from "https";
 import React from "react";
-import { render } from "test-utils";
+import { render } from "test-utils/test-utils";
 import { Layout } from "../Layout";
 
 jest.mock("../Footer", () => ({

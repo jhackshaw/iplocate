@@ -24,10 +24,10 @@ exports[`matches snapshot 1`] = `
 }
 
 .c1 {
-  max-width: 400px;
   color: var(--text-light);
   font-weight: 300;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  text-align: right;
 }
 
 .c1 a: {

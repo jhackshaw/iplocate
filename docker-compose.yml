@@ -15,7 +15,15 @@ services:
     build: ./backend
     volumes:
       - ./backend/src:/app/src
+      - ./geoip-data:/geoip-data
     ports:
       - "3000:3000"
+    env_file:
+      - ./.env
+
+  geoip:
+    image: maxmindinc/geoipupdate
+    volumes:
+      - ./geoip-data:/usr/share/GeoIP
     env_file:
       - ./.env

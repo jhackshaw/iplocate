@@ -1,4 +1,5 @@
 import React from "react";
+import { IP } from "types";
 import { render, RenderOptions } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 

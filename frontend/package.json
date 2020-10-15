@@ -47,7 +47,6 @@
     "@types/react-map-gl": "^5.2.7",
     "@types/react-router-dom": "^5.1.6",
     "@types/styled-components": "^5.1.4",
-    "jest-styled-components": "^7.0.3",
-    "ts-jest": "^26.4.1"
+    "jest-styled-components": "^7.0.3"
   }
 }

@@ -4,9 +4,10 @@
   "description": "Backend for iplocate tool",
   "scripts": {
     "dev": "NODE_ENV=development concurrently \"npm:build:watch\" \"nodemon\"",
-    "lint": "prettier --check \"src/**/*.ts\"",
-    "lint:fix": "prettier --write \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx}\"",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "build": "tsc",
     "build:watch": "tsc --watch --preserveWatchOutput --pretty",
     "start": "node dist/index.js"

@@ -28,6 +28,15 @@ afterAll(() => {
 });
 
 describe("GET /ip/health", () => {
+  let oldEnv: any;
+  beforeAll(() => {
+    oldEnv = process.env.FRONTEND_DOMAIN;
+  });
+
+  afterAll(() => {
+    process.env.FRONTEND_DOMAIN = oldEnv;
+  });
+
   it("can successfully health check", async () => {
     const app = build();
     const resp = {
@@ -95,6 +104,41 @@ describe("GET /ip/health", () => {
       },
     });
     expect(response.statusCode).toStrictEqual(500);
+  });
+
+  it("adds CORS headers if FRONTEND_DOMAIN is present", async () => {
+    process.env.FRONTEND_DOMAIN = "http://example.com";
+    const app = build();
+    const resp = {
+      country: {
+        names: "United States",
+      },
+    };
+    cityLookupMock.mockReturnValue(resp);
+    const response = await app.inject({
+      method: "GET",
+      url: "/ip/health",
+    });
+    expect(response.headers).toHaveProperty(
+      "access-control-allow-origin",
+      "http://example.com"
+    );
+  });
+
+  it("excludes CORS headers if FRONTEND_DOMAIN is not present", async () => {
+    delete process.env.FRONTEND_DOMAIN;
+    const app = build();
+    const resp = {
+      country: {
+        names: "United States",
+      },
+    };
+    cityLookupMock.mockReturnValue(resp);
+    const response = await app.inject({
+      method: "GET",
+      url: "/ip/health",
+    });
+    expect(response.headers).not.toHaveProperty("access-control-allow-origin");
   });
 });
 

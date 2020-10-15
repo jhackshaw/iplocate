@@ -4,7 +4,7 @@ import { Layout } from "components";
 import { Home } from "pages";
 import { ThemeProvider } from "context";
 
-export const App: React.FC = (props) => (
+export const App: React.FC = () => (
   <ThemeProvider>
     <Layout>
       <Router>

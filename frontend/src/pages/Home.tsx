@@ -1,6 +1,13 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
-import { CollapsableDialog, Map, CardHeader, IPForm, IPMenu } from "components";
+import {
+  CollapsableDialog,
+  Map,
+  CardHeader,
+  IPForm,
+  IPMenu,
+  Loading,
+} from "components";
 import { IP } from "types";
 import { request } from "../utils";
 import { usePersistentState } from "hooks";
@@ -51,12 +58,12 @@ export const Home: React.FC = (props) => {
         }))
       );
     },
-    [allIps, setAllIps]
+    [setAllIps]
   );
 
   return (
     <Wrapper>
-      {loading && null}
+      {loading && <Loading />}
       <CollapsableDialog collapsed={!!currentIp && allIps.length > 0}>
         <CardHeader>Locate IP Address</CardHeader>
         {error && <ErrorMsg>{error}</ErrorMsg>}

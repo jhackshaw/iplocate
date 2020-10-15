@@ -5,3 +5,4 @@ export * from "./Card";
 export * from "./IPForm";
 export * from "./Map";
 export * from "./IPMenu";
+export * from "./Loading";

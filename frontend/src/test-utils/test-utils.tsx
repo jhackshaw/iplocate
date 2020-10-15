@@ -1,7 +1,7 @@
 import React from "react";
-import { IP } from "types";
 import { render, RenderOptions } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { ThemeProvider } from "context";
 
 interface CustomRenderOptions extends RenderOptions {
   initialHistory?: string[];
@@ -12,7 +12,9 @@ const customRender = (ui: any, options: CustomRenderOptions = {}) => {
 
   // Provide any context that the components may be expecting
   const Wrapper: React.FC = ({ children }) => (
-    <MemoryRouter initialEntries={initialHistory}>{children}</MemoryRouter>
+    <MemoryRouter initialEntries={initialHistory}>
+      <ThemeProvider>{children}</ThemeProvider>
+    </MemoryRouter>
   );
   return render(ui, { wrapper: Wrapper, ...rest });
 };

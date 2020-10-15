@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Backend for iplocate tool",
   "scripts": {
-    "dev": "NODE_ENV=development concurrently \"npm:build:watch\" \"nodemon\"",
+    "dev": "NODE_ENV=development tsc && concurrently \"npm:build:watch\" \"nodemon\"",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx}\"",
     "test": "jest",

@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import DeckGL from "@deck.gl/react";
 import MapGL, { FlyToInterpolator, ViewState } from "react-map-gl";
 import { IP } from "types";
-import { IconLayer, PickInfo } from "deck.gl";
+import { IconLayer, PickInfo, RGBAColor } from "deck.gl";
 import iconAtlas from "../assets/icon-atlas.png";
 import { Tooltip } from "./Tooltip";
 import { ScatterplotLayer } from "deck.gl";
@@ -26,6 +26,34 @@ const ICON_MAPPING = {
   anon: { x: 384, y: 0, width: 128, height: 128, mask: true },
 };
 
+const getColor = (accuracy?: number, fill?: boolean): RGBAColor => {
+  let val: RGBAColor = [255, 0, 0];
+  if (!accuracy || accuracy > 500) {
+    val = [244, 67, 54];
+  } else if (accuracy > 100) {
+    val = [63, 81, 181];
+  } else if (accuracy > 25) {
+    val = [255, 193, 7];
+  } else {
+    val = [76, 175, 80];
+  }
+  if (fill) val.push(75);
+  return val;
+};
+
+const getZoom = (accuracy?: number) => {
+  if (!accuracy || accuracy > 500) {
+    return 5;
+  }
+  if (accuracy > 100) {
+    return 7;
+  }
+  if (accuracy > 25) {
+    return 8;
+  }
+  return 9;
+};
+
 export const Map: React.FC<Props> = (props) => {
   const { selectedIP, onSetSelectedIp, allIPs } = props;
 
@@ -40,12 +68,12 @@ export const Map: React.FC<Props> = (props) => {
     if (!(selectedIP?.location.latitude && selectedIP.location.longitude)) {
       setViewport(defaultMapState);
     } else {
-      const { latitude, longitude } = selectedIP.location;
+      const { latitude, longitude, accuracyRadius } = selectedIP.location;
       setViewport((current) => ({
         ...current,
         latitude: latitude,
         longitude: longitude,
-        zoom: 5,
+        zoom: getZoom(accuracyRadius),
         transitionDuration: 1500,
         transitionInterpolator: new FlyToInterpolator(),
       }));
@@ -63,7 +91,7 @@ export const Map: React.FC<Props> = (props) => {
     sizeScale: 15,
     getPosition: (ip) => [ip.location.longitude, ip.location.latitude],
     getSize: () => 3,
-    getColor: () => [255, 0, 0],
+    getColor: (ip) => getColor(ip.location.accuracyRadius),
     getIcon: () => "marker",
     onHover: (info: PickInfo<IP>) => setHovered(info),
     onClick: (info: PickInfo<IP>) => {
@@ -78,7 +106,7 @@ export const Map: React.FC<Props> = (props) => {
     radiusUnits: "meters",
     getPosition: (ip) => [ip.location.longitude, ip.location.latitude],
     getLineColor: () => [255, 0, 0],
-    getFillColor: () => [255, 0, 0, 75],
+    getFillColor: (ip) => getColor(ip.location.accuracyRadius, true),
     getRadius: (ip) => ip.location.accuracyRadius * 1000,
   });
 

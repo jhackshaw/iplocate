@@ -32,9 +32,9 @@ const MaxMindNotice = styled.div`
   font-weight: 300;
   font-size: 0.7rem;
   text-align: right;
-  padding-top: 1rem;
 
   @media screen and (max-width: 450px) {
+    padding-top: 1rem;
     text-align: left;
   }
 

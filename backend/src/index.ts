@@ -4,8 +4,7 @@ const FASTIFY_PORT = Number(process.env.FASTIFY_PORT) || 3000;
 
 const server = build({
   logger: {
-    level: "info",
-    prettyPrint: true,
+    level: "info"
   },
 });
 

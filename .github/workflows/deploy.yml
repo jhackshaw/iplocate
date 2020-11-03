@@ -6,8 +6,8 @@ on:
       - master
 
 env:
-  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-  AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
   TF_VAR_geoip_account_id: ${{ secrets.TF_VAR_GEOIP_ACCOUNT_ID }}
   TF_VAR_geoip_license_key: ${{ secrets.TF_VAR_GEOIP_LICENSE_KEY }}
   TF_VAR_state_bucket: ${{ secrets.TF_VAR_STATE_BUCKET }}
@@ -25,14 +25,14 @@ jobs:
       - name: Check Format
         run: terraform fmt -check -diff
 
-      - name: Validate
-        run: terraform validate
-
       - name: Bootstrap
         run: ./bootstrap.sh
 
       - name: Init Terraform
         run: terraform init -input=false
+
+      - name: Validate
+        run: terraform validate
 
       - name: Deploy Infrastructure
         run: terraform apply -input=false -auto-approve

@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = var.state_bucket
-    key    = var.state_bucket_key
-    region = var.aws_region
+    bucket = "iplocate-terraform-state"
+    key    = "tfstate"
+    region = "us-east-1"
   }
 }
 

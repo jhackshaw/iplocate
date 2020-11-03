@@ -15,7 +15,7 @@ services:
     build: ./backend
     volumes:
       - ./backend/src:/app/src
-      - ./geoip-data:/geoip-data
+      - ./geoip-data:/mnt/geoip-data
     ports:
       - "3000:3000"
     env_file:

@@ -12,6 +12,7 @@ provider:
     shouldStartNameWithService: true
   environment:
     GEOIP_DATABASE_PATH: /mnt/geoip-data/GeoLite2-City.mmdb
+    FRONTEND_DOMAIN: https://iplocate.xyz
 
 custom:
   webpack:

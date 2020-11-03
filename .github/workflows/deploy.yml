@@ -90,18 +90,23 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Get API Domain
         run: |
-          REACT_APP_API_URL=$(
+          API_URL=$(
             aws cloudformation \
               --region us-east-1 \
               describe-stacks \
               --stack-name iplocate-prod \
               --query "Stacks[0].Outputs[?OutputKey=='ServiceEndpoint'].OutputValue" \
               --output text
-          )
-          npm i -g netlify-cli
-          npm run build
+          ) 
+          echo "Backend API is $API_URL"
+          echo "REACT_APP_API_URL=$API_URL" >> $GITHUB_ENV
+
+      - name: Build
+        run: npm run build
 
       - name: Deploy
-        run: netlify deploy --dir=./build --prod
+        run: |
+          npm i -g netlify-cli
+          netlify deploy --dir=./build --prod

@@ -11,6 +11,9 @@ env:
   TF_VAR_geoip_account_id: ${{ secrets.TF_VAR_GEOIP_ACCOUNT_ID }}
   TF_VAR_geoip_license_key: ${{ secrets.TF_VAR_GEOIP_LICENSE_KEY }}
   TF_VAR_state_bucket: ${{ secrets.TF_VAR_STATE_BUCKET }}
+  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  REACT_APP_MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
 
 jobs:
   deploy-infrastructure:
@@ -88,7 +91,17 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          REACT_APP_API_URL=$(
+            aws cloudformation \
+              --region us-east-1 \
+              describe-stacks \
+              --stack-name iplocate-prod \
+              --query "Stacks[0].Outputs[?OutputKey=='ServiceEndpoint'].OutputValue" \
+              --output text
+          )
+          netlify i -g netlify-cli
+          netlify build
 
       - name: Deploy
-        run: aws s3 sync build s3://iplocate-frontend --delete
+        run: netlify deploy --dir=./build --prod

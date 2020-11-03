@@ -12,11 +12,6 @@ variable state_bucket_key {
   default = "/tfstate"
 }
 
-variable frontend_bucket {
-  type    = string
-  default = "iplocate-frontend"
-}
-
 # all ssm params must start with the /<project>
 variable project {
   type    = string

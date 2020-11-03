@@ -50,13 +50,25 @@ In order to run unit tests
 
 Pull requests are welcome. Prior to committing, run unit tests and formatting. Code coverage is required to be above 90%.
 
-### Continuous Integration
+### CI/CD
 
-GitHub Actions is used for CI/CD. Backend CI configuration can be found in [.github/workflows/backend.yml](https://github.com/jhackshaw/iplocate/blob/master/.github/workflows/backend.yml), and frontend configuration can be found in [.github/workflows/frontend.yml](https://github.com/jhackshaw/iplocate/blob/master/.github/workflows/frontend.yml). Every push to master triggers the following steps in both:
+GitHub Actions is used for CI/CD. Backend CI configuration can be found in [.github/workflows/backend.yml](https://github.com/jhackshaw/iplocate/blob/master/.github/workflows/backend.yml), and frontend configuration can be found in [.github/workflows/frontend.yml](https://github.com/jhackshaw/iplocate/blob/master/.github/workflows/frontend.yml). Every PR triggers the following steps in both:
 
 1. Install nodejs and dependencies (npm ci)
 2. Ensure prettier code style (npm format:check)
 3. Run tests (npm run test:coverage)
 4. Build production application (npm run build)
+
+Every push to master triggers the following deployment steps with the deploy workflow in [.github/workflows/deploy.yml](https://github.com/jhackshaw/iplocate/blob/master/.github/workflows/deploy.yml)
+
+1. Deploy infrastructure changes using terraform
+2. Deploy backend using serverless framework
+3. Deploy frontend to Netlify
+
+
+### Infrastructure setup
+
+![Diagram](https://raw.githubusercontent.com/jhackshaw/iplocate/master/infrastructure/diagram.png)
+
 
 ![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)

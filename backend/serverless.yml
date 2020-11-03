@@ -8,6 +8,8 @@ provider:
       - ${ssm:/iplocate/security_group_id}
     subnetIds:
       - ${ssm:/iplocate/subnet_id}
+  apiGateway:
+    shouldStartNameWithService: true
   environment:
     GEOIP_DATABASE_PATH: /mnt/geoip-data/GeoLite2-City.mmdb
 
@@ -17,7 +19,7 @@ custom:
     includeModules: true
 
 functions:
-  hello:
+  api:
     handler: ./src/lambda.handler
     events:
       - http:
@@ -25,7 +27,7 @@ functions:
           method: ANY
           cors: true
     fileSystemConfig:
-      localMountPoint: /mnt/geoip-data
+      localMountPath: /mnt/geoip-data
       arn: ${ssm:/iplocate/fs_access_point}
 
 plugins:

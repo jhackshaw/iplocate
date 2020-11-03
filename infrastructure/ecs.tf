@@ -27,7 +27,7 @@ resource "aws_ecs_task_definition" "iplocate_updater_task" {
       {
         "name": "iplocate_update",
         "image": "maxmindinc/geoipupdate",
-        "essential": false,
+        "essential": true,
         "logConfiguration": {
           "logDriver": "awslogs",
           "options": {

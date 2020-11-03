@@ -100,8 +100,8 @@ jobs:
               --query "Stacks[0].Outputs[?OutputKey=='ServiceEndpoint'].OutputValue" \
               --output text
           )
-          netlify i -g netlify-cli
-          netlify build
+          npm i -g netlify-cli
+          npm run build
 
       - name: Deploy
         run: netlify deploy --dir=./build --prod

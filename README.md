@@ -1,3 +1,4 @@
+![IpLocate Deploy](https://github.com/jhackshaw/iplocate/workflows/IpLocate%20Deploy/badge.svg)
 ![Frontend](https://github.com/jhackshaw/iplocate/workflows/IpLocate%20Frontend/badge.svg)
 ![Backend](https://github.com/jhackshaw/iplocate/workflows/IpLocate%20Backend/badge.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)

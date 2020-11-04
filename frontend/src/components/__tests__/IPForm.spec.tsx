@@ -59,7 +59,13 @@ it("does not submit invalid ip addresses", async () => {
 });
 
 it("submits valid ip addresses", async () => {
-  const valid = ["255.255.255.255", "0.0.0.0", "8.8.8.8", "127.0.0.1"];
+  const valid = [
+    "255.255.255.255",
+    "0.0.0.0",
+    "8.8.8.8",
+    "127.0.0.1",
+    "2001:4860:4860::8888",
+  ];
   const { getByPlaceholderText, getByLabelText, queryByText } = render(
     <IPForm onSubmit={submitMock} />
   );

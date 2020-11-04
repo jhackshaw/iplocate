@@ -6,7 +6,7 @@
 
 IP Locate is a tool for querying and plotting geographic information for ipv4 and ipv6 addresses via the [MaxMind GeoLite2 dataset](https://www.maxmind.com/).
 
-![Screen Shot](https://repository-images.githubusercontent.com/304422243/c1bb7d00-1e7c-11eb-9712-46f9cbf84cc8)
+![Screen Shot](https://repository-images.githubusercontent.com/304422243/0e06bd00-1e7d-11eb-8299-a3249d4d2c63)
 
 ### Built with
 

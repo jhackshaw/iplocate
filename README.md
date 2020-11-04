@@ -1,13 +1,12 @@
 ![Frontend](https://github.com/jhackshaw/iplocate/workflows/IpLocate%20Frontend/badge.svg)
 ![Backend](https://github.com/jhackshaw/iplocate/workflows/IpLocate%20Backend/badge.svg)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=jhackshaw/iplocate)](https://dependabot.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 ## About
 
 IP Locate is a tool for querying and plotting geographic information for ipv4 and ipv6 addresses via the [MaxMind GeoLite2 dataset](https://www.maxmind.com/).
 
-![Screen Shot](https://repository-images.githubusercontent.com/304422243/3132f200-0ef9-11eb-8077-d8ab21b1ce3d)
+![Screen Shot](https://repository-images.githubusercontent.com/304422243/c1bb7d00-1e7c-11eb-9712-46f9cbf84cc8)
 
 ### Built with
 

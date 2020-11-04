@@ -15,6 +15,7 @@ IP Locate is a tool for querying and plotting geographic information for ipv4 an
 - [ReactJS](https://reactjs.org/)
 - [Styled Components](https://styled-components.com/)
 - [Fastify](https://www.fastify.io/)
+- [Terraform](https://www.terraform.io/)
 
 ### development
 

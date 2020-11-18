@@ -115,7 +115,7 @@ resource "aws_route_table" "iplocate_private_rt" {
   vpc_id = aws_vpc.iplocate_vpc.id
 
   route {
-    cidr_block     = "0.0.0.0/0"
+    cidr_block  = "0.0.0.0/0"
     instance_id = aws_instance.nat_instance.id
   }
 

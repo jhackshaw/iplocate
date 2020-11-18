@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.2
-      - uses: actions/setup-node@v2.1.1
+      - uses: actions/setup-node@v2-beta
         with:
           node-version: "12"
       - name: Restore npm cache
@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.2
-      - uses: actions/setup-node@v2.1.1
+      - uses: actions/setup-node@v2-beta
         with:
           node-version: "12"
       - name: Restore npm cache
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.2
-      - uses: actions/setup-node@v2.1.1
+      - uses: actions/setup-node@v2-beta
         with:
           node-version: "12"
       - name: Restore npm cache

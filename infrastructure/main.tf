@@ -51,15 +51,47 @@ resource "aws_internet_gateway" "gw" {
   }
 }
 
-resource "aws_eip" "nat_eip" {
-  tags = {
-    Project = var.project
+# resource "aws_eip" "nat_eip" {
+#   tags = {
+#     Project = var.project
+#   }
+# }
+
+# resource "aws_nat_gateway" "natgw" {
+#   allocation_id = aws_eip.nat_eip.id
+#   subnet_id     = aws_subnet.iplocate_public_net.id
+
+#   tags = {
+#     Project = var.project
+#   }
+# }
+
+
+# Using a nat instance over a nat gateway for cost
+data "aws_ami" "aws_nat_ami" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["amzn-ami-vpc-nat-2018.03*"]
   }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["137112412989"]
 }
 
-resource "aws_nat_gateway" "natgw" {
-  allocation_id = aws_eip.nat_eip.id
-  subnet_id     = aws_subnet.iplocate_public_net.id
+resource "aws_instance" "nat_instance" {
+  ami                         = data.aws_ami.aws_nat_ami.id
+  instance_type               = "t3.micro"
+  source_dest_check           = false
+  associate_public_ip_address = true
+  subnet_id                   = aws_subnet.iplocate_public_net.id
+  vpc_security_group_ids      = [aws_security_group.iplocate_sg.id]
+
 
   tags = {
     Project = var.project
@@ -84,7 +116,7 @@ resource "aws_route_table" "iplocate_private_rt" {
 
   route {
     cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.natgw.id
+    instance_id = aws_instance.nat_instance.id
   }
 
   tags = {

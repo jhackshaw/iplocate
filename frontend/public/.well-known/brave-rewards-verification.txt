@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: iplocate.xyz
+Token: c4aa411bcc55cabba418ce0d3563e2320dc4d6dcb001f1aa5825096f085efcca

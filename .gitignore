@@ -33,3 +33,6 @@ yarn-error.log\*
 
 terraform.tfvars
 .terraform
+
+# Local Netlify folder
+.netlify

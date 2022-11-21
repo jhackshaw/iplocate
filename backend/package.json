@@ -18,7 +18,7 @@
   "dependencies": {
     "@maxmind/geoip2-node": "^1.6.0",
     "aws-serverless-express": "^3.3.8",
-    "fastify": "^3.6.0",
+    "fastify": "^3.29.4",
     "fastify-cors": "^4.1.0"
   },
   "devDependencies": {
